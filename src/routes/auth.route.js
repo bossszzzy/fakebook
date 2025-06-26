@@ -6,6 +6,7 @@ import {
   loginSchema,
   validate,
 } from "../validator/validator.js";
+import authenMiddleware from "../middlewares/authen.middleware.js";
 const authRoute = express.Router();
 
 authRoute.post("/login", validate(loginSchema), authController.login);
@@ -14,6 +15,6 @@ authRoute.post(
   validate(registerSchema),
   authController.registerYup
 );
-authRoute.get("/me", authController.getMe);
+authRoute.get("/me", authenMiddleware, authController.getMe);
 
 export default authRoute;

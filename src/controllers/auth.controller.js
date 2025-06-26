@@ -96,8 +96,9 @@ export const login = async (req, res, next) => {
 };
 
 export const getMe = async (req, res, next) => {
-  let numUser = await prisma.user.count();
-  console.log(numUser);
-  createError(403, "Block!!");
-  res.json({ msg: "Get me controller", numUser });
+  // let numUser = await prisma.user.count();
+  // console.log(numUser);
+  // createError(403, "Block!!");
+  // res.json({ msg: "Get me controller", numUser });
+  res.json({user: req.user})
 };
